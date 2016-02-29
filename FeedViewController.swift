@@ -185,17 +185,18 @@ class FeedViewController: UITableViewController {
         
         if(segue.identifier == "ComposeTweet")
         {
+            let targetController = segue.destinationViewController as! ComposeViewController
+            targetController.selectedAccount = selectedAccount
+                        
+        }
+        else if(segue.identifier == "ShowTweets")
+        {
             var path : NSIndexPath = self.tableView.indexPathForSelectedRow!
             
             let tweetData = self.tweets!.objectAtIndex(path.row) as! NSDictionary
             
             let targetController = segue.destinationViewController as! TweetViewController
             targetController.selectedTweet = tweetData
-            
-        }
-        else if(segue.identifier == "ShowTweet")
-        {
-            
         }
     }
 
