@@ -25,7 +25,7 @@ class TweetViewController: UIViewController {
 
         let userData = selectedTweet?.objectForKey("user") as! NSDictionary
         
-        tweetText.text? = selectedTweet?.objectForKey("text") as! String
+        tweetText.text? = selectedTweet?.objectForKey("text") as! NSString as String
         tweetAuthorName.text? = userData.objectForKey("name") as! String
         
         let imageURLString = userData.objectForKey("profile_image_url") as! String
