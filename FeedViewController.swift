@@ -106,7 +106,7 @@ class FeedViewController: UITableViewController {
         cell.tweetUserName.text? = userData.objectForKey("name") as! String
         
         //let imageURLString = userData.objectForKey("profile_image_url") as! String
-        let imageURLString = userData.objectForKey("profile_image_url_https") as! String
+        let imageURLString = userData.objectForKey("profile_image_url") as! String
         let image = imageCache?.objectForKey(imageURLString) as! UIImage?
         
         if let cachedImage = image {
@@ -185,6 +185,12 @@ class FeedViewController: UITableViewController {
         
         if(segue.identifier == "ComposeTweet")
         {
+            var path : NSIndexPath = self.tableView.indexPathForSelectedRow!
+            
+            let tweetData = self.tweets!.objectAtIndex(path.row) as! NSDictionary
+            
+            let targetController = segue.destinationViewController as! TweetViewController
+            targetController.selectedTweet = tweetData
             
         }
         else if(segue.identifier == "ShowTweet")
